@@ -1,8 +1,19 @@
-# React + Vite
+# Working with React Router DOM
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## The Goal of the Project
+Understanding the general structure of React Router DOM and learn to work with Private Route
 
-Currently, two official plugins are available:
+## Project Install
+```
+npm i
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## To Run The Project
+```
+npm run dev
+```
+
+## To Open Project on Browser
+```
+http://localhost:3000
+```
