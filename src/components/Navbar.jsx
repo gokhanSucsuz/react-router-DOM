@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import { Link, NavLink } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({user, handleLogout}) {
   return (
     <>
       <nav className="navbar bg-warning-subtle navbar-expand-lg mb-3">
@@ -29,6 +30,20 @@ export default function Navbar() {
               <NavLink className="nav-link" to="/contact">
                 Contact
               </NavLink>
+              {
+                user ? (<>
+                
+                <NavLink className="nav-link" to="/fav">
+                Favorites
+              </NavLink>
+              <button className="nav-link" onClick={handleLogout}>
+                Logout ({user.name})
+                </button>
+              </>):
+              <NavLink className="nav-link" to="/login">
+                Login
+              </NavLink>
+              }
             </div>
           </div>
         </div>

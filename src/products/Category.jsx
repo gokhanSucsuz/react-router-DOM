@@ -1,27 +1,28 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+/* eslint-disable react/prop-types */
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import { ProductCard } from "../products";
 
-export default function Category() {
-    const [categories, setCategories] = useState([])
+export default function Category({user}){
+    const {categoryName} = useParams()
+    const [categoryProducts, setCategoryProducts] = useState([])
+    
     useEffect(()=>{
-        fetch('https://fakestoreapi.com/products/categories')
+        fetch(`https://fakestoreapi.com/products/category/${categoryName}`)
             .then(res=>res.json())
-            .then(json=>setCategories(json))
-    },[])
-
-  return (
-    <>
-      <h1>Categories</h1>
-      <div className="list-group shadow-lg">
-        {
-            categories.map((category,index) => 
-            <Link key={index} 
-            to={`/products/category/${category}`} 
-            className="list-group-item list-group-item-action">
-            {category.toUpperCase()}
-            </Link>)
-        }
-      </div>
-    </>
-  );
+            .then(json=>setCategoryProducts(json))
+            .catch(err => console.log(err))
+    }, [categoryName])
+    return (
+        <>
+            <h1>Category: {categoryName.toUpperCase()} </h1>
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+                {categoryProducts.map(item=>
+                    <ProductCard key={item.id}  user={user} item={item} />
+                )
+                }
+            </div>
+        </>
+    )
 }
