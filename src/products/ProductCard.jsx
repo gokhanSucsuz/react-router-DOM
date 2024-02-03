@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export default function ProductCard({ user, item }) {
   //const [favs, setFavs] = useState([])
 
-  function handleClick(product) {
+function handleClick(product) {
     let localFavs = JSON.parse(localStorage.getItem("favs")) ?? [];
     const itemIndex = localFavs.findIndex(
       (localItem) => product.id === localItem.id
@@ -19,6 +19,7 @@ export default function ProductCard({ user, item }) {
     }
     localStorage.setItem("favs", JSON.stringify(localFavs));
   }
+
 
 
   return (
